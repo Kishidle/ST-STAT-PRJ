@@ -6,7 +6,8 @@ text_cipher = []
 with open("textcipher.text") as fileobj:
     for line in fileobj:
         for ch in line:
-            text_cipher.append(ch)
+            text_cipher.append(ch) #we can replace this so that it already counts the frequency of the letter maybe?
+
 
 #initialization of frequency distribution of letters
 #make a list for the frequency distribution, then make a look-up list for the letters?
@@ -15,11 +16,19 @@ freq_distrib = [0.082, 0.015, 0.028, 0.043, 0.127, 0.022, 0.020, 0.061, 0.070, 0
 
 
 look_up = [None] * 27
-
+freq_table = [None] * 27
 a = 97
+
+#use chr(num) to change 97 into a
 for x in range(27):
     look_up.append(a)
     a += 1
+
+#finds the frequency count of each letter in the text_cipher
+for ch in text_cipher:
+    for x in look_up:
+        if look_up[x] = ord(ch):
+            freq_table[x] += 1
 
 
 #algorithm for frequency analysis goes here
