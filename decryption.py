@@ -1,5 +1,5 @@
 import math
-
+import operator
 text_cipher = []
 
 #reading text file and putting it to list
@@ -30,7 +30,8 @@ for ch in text_cipher:
         if look_up[x] = ord(ch):
             freq_table[x] += 1
 
-
+#bruteforce method: find the largest value of freq_table, which is the most frequent character. find its index and then compare with freq_distrib
+index, value = max(enumerate(freq_table), key=operator.itemgetter(1))
 #algorithm for frequency analysis goes here
 
 
