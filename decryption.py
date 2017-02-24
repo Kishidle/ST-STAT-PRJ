@@ -44,8 +44,9 @@ for x in range(27):
 
 #shift to e going left, do this until you exhaust every letter in the freq_table. this is one option
 
+#less bruteforce method: comparing most common in text to most common in table, 2nd most common in text to 2nd most common in table, and so on...
 
-#algorithm for frequency analysis goes here
+#find a way to ignore the values already used in the freq_table
 
 
 
