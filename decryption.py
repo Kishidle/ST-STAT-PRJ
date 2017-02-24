@@ -13,7 +13,8 @@ with open("textcipher.text") as fileobj:
 #make a list for the frequency distribution, then make a look-up list for the letters?
 freq_distrib = [0.082, 0.015, 0.028, 0.043, 0.127, 0.022, 0.020, 0.061, 0.070, 0.002, 0.008, 0.040, 0.024,
                 0.067, 0.075, 0.019, 0.001, 0.060, 0.063, 0.091, 0.028, 0.010, 0.024, 0.002, 0.020, 0.001]
-
+sorted_freq = [0.127, 0.091, 0.082, 0.075, 0.070, 0.067, 0.063, 0.061, 0.060, 0.043, 0.040, 0.028, 0.028,
+               0.024, 0.024, 0.022, 0.020, 0.020, 0.019, 0.015, 0.010, 0.008, 0.002, 0.002, 0.001, 0.001]
 
 look_up = [None] * 27
 freq_table = [None] * 27
@@ -30,8 +31,13 @@ for ch in text_cipher:
         if look_up[x] = ord(ch):
             freq_table[x] += 1
 
-#bruteforce method: find the largest value of freq_table, which is the most frequent character. find its index and then compare with freq_distrib
-index, value = max(enumerate(freq_table), key=operator.itemgetter(1))
+#bruteforce method?: find the largest value of freq_table, which is the most frequent character. find its index and then compare with freq_distrib
+index, value = max(enumerate(freq_table), key=operator.itemgetter(1)) #this finds the largest value in the list and its index
+
+
+#shift to e going left, do this until you exhaust every letter in the freq_table. this is one option
+
+
 #algorithm for frequency analysis goes here
 
 
