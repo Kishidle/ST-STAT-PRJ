@@ -20,6 +20,7 @@ sorted_letters = ['e', 't', 'a', 'o', 'i', 'n', 's', 'h', 'r', 'd', 'l', 'c', 'u
 look_up = [None] * 27
 freq_table = [None] * 27
 a = 97
+shift_value = 0
 
 #use chr(num) to change 97 into a
 for x in range(27):
@@ -36,11 +37,25 @@ for ch in text_cipher:
 index, value = max(enumerate(freq_table), key=operator.itemgetter(1)) #this finds the largest value in the list and its index
 
 char = look_up[index]
+
 for x in range(27):
-    if char < chr(sorted_letters[x]): #this means that we can't subtract to get the shift value since it goes way past z and loops back
+    sorted_char = ord(sorted_letters[x])
+    if char < sorted_char: #this means that we can't subtract to get the shift value since it goes way past z and loops back
         #logic for this should be here
+        #increment until equal, loop back to a if it goes past z
+        while True:
+            if sorted_char != char:
+                shift_value += 1
+                if chr(sorted_char) == 'z':
+                    char = 97
+                else:
+                    sorted_char += 1
+            else:
+                break
     else: #if not...then we can subtract normally to get the shift value
-        shift_value = chr(sorted_letters[x]) - chr(char)
+        shift_value = sorted_char - char
+
+    
 
 #shift to e going left, do this until you exhaust every letter in the freq_table. this is one option
 
