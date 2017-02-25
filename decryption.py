@@ -3,7 +3,7 @@ import operator
 text_cipher = []
 
 #reading text file and putting it to list
-with open("textcipher.text") as fileobj:
+with open("textcipher.txt") as fileobj:
     for line in fileobj:
         for ch in line:
             text_cipher.append(ch) #we can replace this so that it already counts the frequency of the letter maybe?
