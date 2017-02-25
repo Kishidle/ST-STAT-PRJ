@@ -18,7 +18,7 @@ sorted_freq = [0.127, 0.091, 0.082, 0.075, 0.070, 0.067, 0.063, 0.061, 0.060, 0.
 sorted_letters = ['e', 't', 'a', 'o', 'i', 'n', 's', 'h', 'r', 'd', 'l', 'c', 'u', 'm', 'w', 'f', 'g', 'y', 'p',
                   'b', 'v', 'k', 'j', 'x', 'q', 'z']
 look_up = []
-freq_table = [None] * 27
+freq_table = [0] * 27 #might want to change to all 0s
 a = 97
 shift_value = 0
 
