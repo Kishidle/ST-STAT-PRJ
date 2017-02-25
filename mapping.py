@@ -17,6 +17,10 @@ sorted_freq = [0.127, 0.091, 0.082, 0.075, 0.070, 0.067, 0.063, 0.061, 0.060, 0.
                0.024, 0.024, 0.022, 0.020, 0.020, 0.019, 0.015, 0.010, 0.008, 0.002, 0.002, 0.001, 0.001]
 sorted_letters = ['e', 't', 'a', 'o', 'i', 'n', 's', 'h', 'r', 'd', 'l', 'c', 'u', 'm', 'w', 'f', 'g', 'y', 'p',
                   'b', 'v', 'k', 'j', 'x', 'q', 'z']
+sorted_cipher_letters = []
+sorted_cipher_freq = []
+cipher_letter_shift_value = [0] * 27
+
 look_up = []
 freq_table = [0] * 27 #might want to change to all 0s
 a = 97
@@ -62,6 +66,26 @@ for x in range(27):
 #shift to e going left, do this until you exhaust every letter in the freq_table. this is one option
 
 #less bruteforce method: comparing most common in text to most common in table, 2nd most common in text to 2nd most common in table, and so on...
+
+    #ok let's assume we already have two sorted lists, sorted_letters and sorted_cipher_letters, get the shift value of each
+
+    for x in range(27):
+        cipher_letter_shift_value[x] = ord(sorted_letters[x]) - ord(sorted_cipher_letters[x])
+
+    # and then afterwards pwede na natin i-shift shift yung shit
+
+    # -- something like --
+
+    # for each character in the .txt ( go through each char )
+        # find the character with its match in sorted_cipher_letters[]?
+        # get the related cipher_letter_shift_value
+        # while shift_value is not 0, move it - or + depending on the value (so if we're trying to reach 'e' and our corresponding cipher letter is 'z', negative yung shift value, tapos we don't stop until nasa e na tayo)
+        # store the decrypted letter in another list (maybe call it decrypted_text)?
+        # iterate
+
+    # print decrypted cipher
+    # my head is really not doing so great - i hope magets mo somehow
+
 
 #find a way to ignore the values already used in the freq_table
 
