@@ -17,10 +17,9 @@ sorted_freq = [0.127, 0.091, 0.082, 0.075, 0.070, 0.067, 0.063, 0.061, 0.060, 0.
                0.024, 0.024, 0.022, 0.020, 0.020, 0.019, 0.015, 0.010, 0.008, 0.002, 0.002, 0.001, 0.001]
 sorted_letters = ['e', 't', 'a', 'o', 'i', 'n', 's', 'h', 'r', 'd', 'l', 'c', 'u', 'm', 'w', 'f', 'g', 'y', 'p',
                   'b', 'v', 'k', 'j', 'x', 'q', 'z']
-look_up = list()
-freq_table = [None] * 27
+look_up = []
+freq_table = [0] * 27 #might want to change to all 0s
 a = 97
-i = 0
 shift_value = 0
 
 #use chr(num) to change 97 into a
@@ -30,11 +29,8 @@ for x in range(27):
 
 #finds the frequency count of each letter in the text_cipher
 for ch in text_cipher:
-    print ch
-    for x in range(len(look_up)):
-        print x
-        print look_up[x]
-        if look_up[x] == ord(chr):
+    for x in len(look_up):
+        if look_up[x] == ord(ch):
             freq_table[x] += 1
 
 #bruteforce method?: find the largest value of freq_table, which is the most frequent character. find its index and then compare with freq_distrib
@@ -59,7 +55,8 @@ for x in range(27):
     else: #if not...then we can subtract normally to get the shift value
         shift_value = sorted_char - char
 
-    
+    #shift the text!
+
 
 #shift to e going left, do this until you exhaust every letter in the freq_table. this is one option
 
