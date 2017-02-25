@@ -29,9 +29,10 @@ for x in range(27):
 
 #finds the frequency count of each letter in the text_cipher
 for ch in text_cipher:
-    for x in len(look_up):
+    for x in range(len(look_up)):
         if look_up[x] == ord(ch):
             freq_table[x] += 1
+            print chr(look_up[x]) + " has " + str(freq_table[x]) + " occurences."
 
 #bruteforce method?: find the largest value of freq_table, which is the most frequent character. find its index and then compare with freq_distrib
 index, value = max(enumerate(freq_table), key=operator.itemgetter(1)) #this finds the largest value in the list and its index
