@@ -42,6 +42,9 @@ for ch in text_cipher:
             freq_table[x].count += 1
             #freq_table[x] += 1 old method
 
+print ("What method would you like to use? [1] Bruteforce Method [2] Less BruteForce Method")
+#ask for input
+
 #bruteforce method?: find the largest value of freq_table, which is the most frequent character. find its index and then compare with freq_distrib
 index, value = max(enumerate(freq_table), key=operator.itemgetter(1)) #this finds the largest value in the list and its index
 
@@ -90,7 +93,7 @@ for x in range(len(freq_table)):
         shift_value = sorted_char - freq_table[x].char
 
     #put shift value into a table
-    
+
 
 
 
