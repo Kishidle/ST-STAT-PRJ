@@ -29,7 +29,7 @@ for x in range(27):
 
 #finds the frequency count of each letter in the text_cipher
 for ch in text_cipher:
-    for x in look_up:
+    for x in len(look_up):
         if look_up[x] = ord(ch):
             freq_table[x] += 1
 
