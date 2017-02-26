@@ -8,21 +8,6 @@ def getRelativeFrequency(freq_table, text_cipher):
         #freq_table[x].req_freq = freq_table.count / len(text_cipher)
         rel_freq2[x] = float(freq_table[x]) / len(text_cipher)
     return rel_freq2
-def shiftText(text, count):
-    result = []
-    #print count
-    for ch in text:
-        #print "Letter " + ch + " With ASCII value " + str(ord(ch)) + " shifted by value of " + str(count)
-        if ord(ch) != 32:
-            temp = ord(ch) - count
-            if temp < 97:
-                temp = 97 + (ord(ch) % 26)
-            if temp > 122:
-                temp = 122 - (ord(ch) % 26)
-        result.append(chr(temp))
-
-    #print ''.join(result)
-    return result
 def shiftText2(text, count):
     result = []
     #print count
@@ -95,7 +80,6 @@ for ch in text_cipher:
             freq_table2[x] += 1
 char = freq_table[0].char
 
-shift_table = []
 shift_value = 0
 answer_list = []
 for n in range(26):
@@ -111,23 +95,18 @@ for n in range(26):
         test = shiftText2(text_cipher, shift_value)
         test2 = ''.join(test)
         freq_table2 = [0] * 26
-        #print test
-        #print "\n"
         for ch in test:
             for b in range(len(look_up)):
                 if look_up[b] == ord(ch):
                     freq_table2[b] += 1
-        #print test
-        #print freq_table2
         rel_freq2 = getRelativeFrequency(freq_table2, text_cipher)
-        #print rel_freq2
         node = Test_Class(computeScore(rel_freq2, freq_distrib), shift_value)
         answer_list.append(node)
         print "Shift value: " + str(answer_list[n].shift_value) + " and score: " + str(answer_list[n].score)
-
         shift_value += 1
+
 answer_list.sort(key=operator.attrgetter('score'))
-#print answer_list[0].shift_value
+
 print "\n"
 print "Smallest score is " + str(answer_list[0].score) + " found at shift value " + str(answer_list[0].shift_value)
 print "\n"
