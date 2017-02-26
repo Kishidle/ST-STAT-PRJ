@@ -13,11 +13,12 @@ def shiftText(text, count):
     #print count
     for ch in text:
         #print "Letter " + ch + " With ASCII value " + str(ord(ch)) + " shifted by value of " + str(count)
-        temp = ord(ch) - count
-        if temp < 97:
-            temp = 97 + (ord(ch) % 26)
-        if temp > 122:
-            temp = 122 - (ord(ch) % 26)
+        if ord(ch) != 32:
+            temp = ord(ch) - count
+            if temp < 97:
+                temp = 97 + (ord(ch) % 26)
+            if temp > 122:
+                temp = 122 - (ord(ch) % 26)
         result.append(chr(temp))
 
     #print ''.join(result)
@@ -26,14 +27,17 @@ def shiftText2(text, count):
     result = []
     #print count
     for ch in text:
-        temp = ord(ch)
-        for x in range(count):
+        if ord(ch) != 32:
+            temp = ord(ch)
+            for x in range(count):
 
-            if chr(temp) == 'a':
-                temp = ord('z')
-            else:
-                temp -= 1
-        result.append(chr(temp))
+                if chr(temp) == 'a':
+                    temp = ord('z')
+                else:
+                    temp -= 1
+            result.append(chr(temp))
+        else:
+            result.append(chr(32))
     return result
 def computeScore(observed_rel, expected_rel):
     score = 0
@@ -42,7 +46,8 @@ def computeScore(observed_rel, expected_rel):
     return score
 
 #reading text file and putting it to list
-with open("textcipher2.txt") as fileobj:
+file_name = raw_input('File name of the cipher text to be used: ')
+with open(file_name) as fileobj:
     for line in fileobj:
         for ch in line:
             text_cipher.append(ch) #we can replace this so that it already counts the frequency of the letter maybe?
@@ -88,42 +93,7 @@ for ch in text_cipher:
         if look_up[x] == ord(ch):
             freq_table[x].count += 1
             freq_table2[x] += 1
-
-print ("What method would you like to use? [1] Bruteforce Method [2] Less BruteForce Method")
-#ask for input
-
-#bruteforce method?: find the largest value of freq_table, which is the most frequent character. find its index and then compare with freq_distrib
-
-freq_table.sort(key = operator.attrgetter('count'), reverse=True) #this finds the largest value in the list and its index
-
-#print "count: " + str(freq_table[0].count)
-
 char = freq_table[0].char
-
-for x in range(26):
-    sorted_char = ord(sorted_letters[x])
-    shift_value = 0
-    while True:
-        if sorted_char != char:
-            shift_value += 1
-            if chr(sorted_char) == 'z':
-                sorted_char = 97
-            else:
-                sorted_char += 1
-        else:
-            break
-    #shift the text!
-    shiftText(text_cipher, shift_value)
-
-#shift to e going left, do this until you exhaust every letter in the freq_table. this is one option
-
-#less bruteforce method: comparing most common in text to most common in table, 2nd most common in text to 2nd most common in table, and so on...
-
-#algorithm 2
-
-#getting the relative frequency
-
-
 
 shift_table = []
 shift_value = 0
