@@ -26,10 +26,10 @@ look_up = []
 a = 97
 shift_value = 0
 
-freq_table = [None] * 27
+freq_table = [None] * 26
 
 #use chr(num) to change 97 into a
-for x in range(27):
+for x in range(26):
     look_up.append(a)
     char_test = Char_Class(a, 0)
     freq_table[x] = char_test
@@ -50,7 +50,7 @@ index, value = max(enumerate(freq_table), key=operator.itemgetter(1)) #this find
 
 char = look_up[index]
 
-for x in range(27):
+for x in range(26):
     sorted_char = ord(sorted_letters[x])
     if char < sorted_char: #this means that we can't subtract to get the shift value since it goes way past z and loops back
         #logic for this should be here
