@@ -71,6 +71,7 @@ for x in range(26):
     else: #if not...then we can subtract normally to get the shift value
         shift_value = sorted_char - char
 
+
     print "Letter " + chr(ord(sorted_letters[x])) + " compared with " + chr(char) + " has shift value of " + str(shift_value)
 
     #shift the text!
