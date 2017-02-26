@@ -10,6 +10,8 @@ def shiftText(text, count):
         temp = ord(ch) + count
         if temp < 97:
             temp = 97 + (ord(ch) % 26)
+        if temp > 122:
+            temp = 122 - (ord(ch) % 26)
         result.append(chr(temp))
 
     print ''.join(result)
