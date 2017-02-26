@@ -135,6 +135,7 @@ for n in range(26):
         node = Test_Class(computeScore(rel_freq2, freq_distrib), shift_value)
         answer_list.append(node)
         print "Shift value: " + str(answer_list[n].shift_value) + " and score: " + str(answer_list[n].score)
+        print "\n"
         shift_value += 1
     else:
         test = shiftText2(text_cipher, shift_value)
@@ -153,14 +154,16 @@ for n in range(26):
         node = Test_Class(computeScore(rel_freq2, freq_distrib), shift_value)
         answer_list.append(node)
         print "Shift value: " + str(answer_list[n].shift_value) + " and score: " + str(answer_list[n].score)
+        print "\n"
         shift_value += 1
 answer_list.sort(key=operator.attrgetter('score'))
-print answer_list[0].shift_value
+#print answer_list[0].shift_value
 
 print "\n"
 print "Cipher text: " + ''.join(text_cipher)
 print "\n"
-
+print "Shift to the left " + str(answer_list[0].shift_value) + " times"
+print "\n"
 test = shiftText2(text_cipher, answer_list[0].shift_value)
 test2 = ''.join(test)
 print "Original text: " + test2
