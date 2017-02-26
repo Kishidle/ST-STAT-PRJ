@@ -2,6 +2,19 @@ import math
 import operator
 text_cipher = []
 
+#def shiftText(text, count):
+   # result = []
+   # print count
+   # for ch in text:
+    #    print "Letter " + ch + " With ASCII value " + str(ord(ch)) + " shifted by value of " + str(count)
+     #   temp = ord(ch) + count
+     #   if temp < 97:
+
+#        result.append(chr(temp))
+
+ #   print ''.join(result)
+
+
 #reading text file and putting it to list
 with open("textcipher.txt") as fileobj:
     for line in fileobj:
@@ -56,26 +69,30 @@ char = freq_table[0].char
 
 for x in range(26):
     sorted_char = ord(sorted_letters[x])
+    shift_value = 0
     if char < sorted_char: #this means that we can't subtract to get the shift value since it goes way past z and loops back
+        print "Inside if function"
         #logic for this should be here
         #increment until equal, loop back to a if it goes past z
         while True:
             if sorted_char != char:
                 shift_value += 1
-                if chr(sorted_char) == 'z':
-                    sorted_char = 97
+                if chr(char) == 'z':
+                    char = 97
                 else:
-                    sorted_char += 1
+                    char += 1
             else:
                 break
+        print shift_value
     else: #if not...then we can subtract normally to get the shift value
+        "Inside else function"
         shift_value = sorted_char - char
-
+        print shift_value
 
     print "Letter " + chr(ord(sorted_letters[x])) + " compared with " + chr(char) + " has shift value of " + str(shift_value)
 
     #shift the text!
-
+    #shiftText(text_cipher, shift_value)
 
 #shift to e going left, do this until you exhaust every letter in the freq_table. this is one option
 
